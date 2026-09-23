@@ -3,8 +3,6 @@ import { HydratedDocument } from 'mongoose';
 
 export class CarService {
 
-
-
   async getAllCars(): Promise<ICar[]> {
     return await CarModel.find().lean(); 
   }
@@ -25,4 +23,5 @@ export class CarService {
   async deleteCar(id: string): Promise<ICar | null> {
     return await CarModel.findByIdAndDelete(id).lean();
   }
+  
 }

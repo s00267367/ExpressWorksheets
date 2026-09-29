@@ -4,9 +4,10 @@
 # @name postACar
 POST {{endpoint}} HTTP/1.1
 content-type: application/json
+x-api-key: 1234567890
 
 {
-  "make": "Toyota",
+  "make": "Lambo",
   "model": "Auris"
 }
 ###
@@ -15,11 +16,11 @@ content-type: application/json
 ###
 GET  {{endpoint}} HTTP/3.0
 content-type: application/json
-x-api-key: beepboop
+x-api-key: 1234567890
 ###
 GET  {{endpoint}}/{{newCar}} HTTP/3.0
-
 content-type: application/json
+
 
 
 ###
@@ -31,3 +32,9 @@ content-type: application/json
 
 PUT  {{endpoint}}/6ab39ad46bcda005d5b2cabd HTTP/3.0
 content-type: application/json
+
+###
+GET  http://localhost:1610/stormlight HTTP/3.0
+content-type: application/json
+
+###

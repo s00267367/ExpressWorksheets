@@ -2,17 +2,20 @@ import express, {Application, Request, Response} from "express" ;
 import carRoutes from './routes/cars';
 import {env} from './config/env';
 import {connectDB} from './config/database';
+import {logURL} from './middleware/log.middleware';
+import { authenticateKey } from "./middleware/auth.middleware";
+//import {authenticateKey} from './middleware/auth.middleware';
 const PORT = env.port;
 
 
 
 const app: Application = express();
+
 app.use(express.json());
-app.use('/api/v1/cars', carRoutes);
-app.use((req, _res, next) => {  
-    console.log(`${req.method} ${req.originalUrl}`);
-    next();
-});
+app.use('/api/v1/cars',logURL, authenticateKey,  carRoutes);
+app.use(logURL);
+
+
 
 app.get("/ping", async (_req : Request, res: Response) => {
     res.json({

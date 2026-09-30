@@ -3,7 +3,7 @@ import carRoutes from './routes/cars';
 import {env} from './config/env';
 import {connectDB} from './config/database';
 import {logURL} from './middleware/log.middleware';
-import { authenticateKey } from "./middleware/auth.middleware";
+//import { authenticateKey } from "./middleware/auth.middleware";
 //import {authenticateKey} from './middleware/auth.middleware';
 const PORT = env.port;
 
@@ -12,7 +12,7 @@ const PORT = env.port;
 const app: Application = express();
 
 app.use(express.json());
-app.use('/api/v1/cars',logURL, authenticateKey,  carRoutes);
+app.use('/api/v1/cars',logURL,  carRoutes);
 app.use(logURL);
 
 

@@ -7,8 +7,9 @@ content-type: application/json
 x-api-key: 1234567890
 
 {
-  "make": "Lambo",
-  "model": "Auris"
+  "make": "Ferrari",
+  "model": "Auris",
+  "year": 2026
 }
 ###
 @newCar = {{postACar.response.body._id}}

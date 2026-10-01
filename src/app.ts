@@ -3,6 +3,8 @@ import carRoutes from './routes/cars';
 import {env} from './config/env';
 import {connectDB} from './config/database';
 import {logURL} from './middleware/log.middleware';
+import { swaggerSpec } from "./config/swagger";
+import swaggerUi from 'swagger-ui-express';
 //import { authenticateKey } from "./middleware/auth.middleware";
 //import {authenticateKey} from './middleware/auth.middleware';
 const PORT = env.port;
@@ -12,9 +14,14 @@ const PORT = env.port;
 const app: Application = express();
 
 app.use(express.json());
-app.use('/api/v1/cars',logURL,  carRoutes);
+app.use('/api/v1/cars', logURL, carRoutes);
 app.use(logURL);
-
+app.use(
+'/api-docs',
+swaggerUi.serve,
+swaggerUi.setup(swaggerSpec)
+);
+  
 
 
 app.get("/ping", async (_req : Request, res: Response) => {

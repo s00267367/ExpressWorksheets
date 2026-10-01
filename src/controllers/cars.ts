@@ -5,6 +5,20 @@ const carService = new CarService();
 
 export class CarController {
 
+  /**
+ * @openapi
+ * /cars:
+ *   get:
+ *     summary: Retrieve all cars
+ *     tags:
+ *       - Cars
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved cars
+ *       500:
+ *         description: Internal server error
+ */
+
   getCars = async (_req: Request, res: Response): Promise<void> => {
 
     try {
@@ -14,6 +28,27 @@ export class CarController {
       res.status(500).json({ message: 'Error fetching cars', error });
     }
   };
+/**
+* @openapi
+* /cars/{id}:
+*   get:
+*     summary: Get a car by ID
+*     tags:
+*       - Cars
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: string
+*     responses:
+*       200:
+*         description: Car found
+*       404:
+*         description: Car not found
+*       500:
+*         description: Internal server error
+*/
 
   getCarById = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -28,6 +63,27 @@ export class CarController {
       res.status(500).json({ message: 'Error fetching car', error });
     }
   };
+ /**
+ * @openapi
+ * /cars:
+ *   post:
+ *     summary: Create a new car
+ *     tags:
+ *       - Cars
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateCarInput'
+ *     responses:
+ *       201:
+ *         description: Successfully created car
+ *       400:
+ *         description: Bad request
+ *       500:
+ *         description: Internal server error
+ */
 
   createCar = async (req: Request, res: Response): Promise<void> => {
     const validation = createCarZSchema.safeParse(req.body);
@@ -62,6 +118,27 @@ export class CarController {
     }
   };
 
+/**
+* @openapi
+* /cars/{id}:
+*   delete:
+*     summary: Delete a car by ID
+*     tags:
+*       - Cars
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: string
+*     responses:
+*       200:
+*         description: Car deleted successfully
+*       404:
+*         description: Car not found
+*       500:
+*         description: Internal server error
+*/
 
   deleteCar = async (req: Request, res: Response): Promise<void> => {
     try {

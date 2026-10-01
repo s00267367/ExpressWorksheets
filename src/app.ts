@@ -33,8 +33,6 @@ app.get('/Stormlight', async (_req : Request, res: Response) => {
     });
 });
 
-
-
 const startServer = async () => {
   await connectDB();
 

@@ -31,13 +31,13 @@ export interface ICar {
 export const createCarZSchema= z.object({
   make: z.string().max(100).min(1),
   model: z.string().max(100).min(1),
-  year: z.number().min(1950).optional()
+  year: z.number().min(1950).max(new Date().getFullYear()).optional()
 });
 
 export const updateCarZSchema= z.object({
   make: z.string().min(1),
   model: z.string().min(1),
-  year: z.number().min(1950).optional()
+  year: z.number().min(1950).max(new Date().getFullYear()).optional()
 });
 
 const carSchema = new Schema<ICar>(

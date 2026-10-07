@@ -29,6 +29,12 @@ describe('Test Car Validation', () => {
             { ...validCar, "year": 'wrong year' })).toThrow();
     });
 
+    it('should fail for the future year ', () => {
+
+        expect(() => createCarZSchema.parse(
+            { ...validCar, "year": new Date().getFullYear() + 1 })).toThrow();
+    });
+
     it('should fail for the missing make ', () => {
 
         expect(() => createCarZSchema.parse(
@@ -40,6 +46,8 @@ describe('Test Car Validation', () => {
         expect(() => createCarZSchema.parse(
             { ...validCar, "model": '' })).toThrow();
     });
+
+
 
 
 });

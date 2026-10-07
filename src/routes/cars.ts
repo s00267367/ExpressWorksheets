@@ -10,8 +10,8 @@ const carController = new CarController();
 router.get('/', carController.getCars);
 
 router.get('/:id', carController.getCarById);
-router.post('/', validate(createCarZSchema), authenticateKey, carController.createCar);
-router.put('/:id', validate(updateCarZSchema), authenticateKey, carController.updateCar);
+router.post('/', validate(createCarZSchema), carController.createCar);
+router.put('/:id', validate(updateCarZSchema), carController.updateCar);
 router.delete('/:id', carController.deleteCar);
 
 export default router;

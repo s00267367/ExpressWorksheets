@@ -29,8 +29,8 @@ export interface ICar {
  */
 
 export const createCarZSchema= z.object({
-  make: z.string().max(100),
-  model: z.string().max(100),
+  make: z.string().max(100).min(1),
+  model: z.string().max(100).min(1),
   year: z.number().min(1950).optional()
 });
 

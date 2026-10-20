@@ -15,12 +15,12 @@ export const app: Application = express();
 app.use(express.json());
 app.use('/api/v1/cars', logURL, carRoutes);
 app.use(logURL);
-app.use(errorHandler);
 app.use(
 '/api-docs',
 swaggerUi.serve,
 swaggerUi.setup(swaggerSpec)
 );
+app.use(errorHandler);
   
 
 

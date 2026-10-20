@@ -3,6 +3,7 @@ import carRoutes from './routes/cars';
 import {logURL} from './middleware/log.middleware';
 import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
+import { errorHandler } from "./middleware/error.middleware";
 //import { authenticateKey } from "./middleware/auth.middleware";
 //import {authenticateKey} from './middleware/auth.middleware';
 
@@ -14,6 +15,7 @@ export const app: Application = express();
 app.use(express.json());
 app.use('/api/v1/cars', logURL, carRoutes);
 app.use(logURL);
+app.use(errorHandler);
 app.use(
 '/api-docs',
 swaggerUi.serve,
@@ -37,4 +39,15 @@ app.get('/Stormlight', async (_req : Request, res: Response) => {
     message: "Life Before Death, Strength Before Weakness, Journey Before Destination",
     });
 });
+
+app.get("/pong", (_req : Request, res: Response) => {
+    console.log("Received request to /pong");
+    throw new Error("Simulated error in /pong route");
+});
+
+app.get("/pung", async (_req : Request, res: Response) => {
+    console.log("Received request to /pung");
+     throw new Error("Simulated error in /pung route");
+});
+
 

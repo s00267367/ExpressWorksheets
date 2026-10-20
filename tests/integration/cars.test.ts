@@ -26,11 +26,11 @@ describe ('POST /cars', () => {
 
         const response = await request(app)
             .post('/api/v1/cars')
-            .send({
+            .send({body:{
                 make: "Ford",
                 model: "Focus",
                 year: 2020
-            });
+            }});
 
 
         expect(response.status).toBe(201);
@@ -56,11 +56,11 @@ describe ('PUT /cars/:id', () => {
     it('updates a car by ID', async () => {
         const response = await request(app)
             .put(`/api/v1/cars/${carId}`)
-            .send({
+            .send({body:{
                 make: "Toyota",
                 model: "Camry",
                 year: 2021
-            });
+            }});
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('make', 'Toyota');

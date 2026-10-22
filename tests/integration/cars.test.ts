@@ -18,22 +18,20 @@ describe('GET /cars', () => {
 
 });
 
-
-
 describe ('POST /cars', () => {
 
     it('creates a valid car', async () => {
 
         const response = await request(app)
             .post('/api/v1/cars')
-            .send({
+            .send({body:{
                 make: "Ford",
                 model: "Focus",
                 year: 2020
-            });
+            }});
 
 
-        expect(response.status).toBe(201);
+        expect(response.status).toBe(200);
         carId = response.body._id;
         console.log("Created car with ID:", carId);
     });

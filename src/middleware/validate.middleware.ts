@@ -10,12 +10,12 @@ export const validate = (schema: z.ZodObject<any>) => (
 
   const validation = schema.safeParse({
       body: req.body,
-      params: req.params,
-      query: req.query
+      // params: req.params,
+      // query: req.query
     });
 
   if (!validation.success) {
-
+    console.table(req.body);
     next(new ValidationError('Validation failed',
       validation.error.issues));
     return;

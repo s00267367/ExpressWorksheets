@@ -6,11 +6,11 @@ POST {{endpoint}} HTTP/1.1
 content-type: application/json
 x-api-key: 1234567890
 
-{"body":{
+{
   "make": "Ferrari",
   "model": "Auris",
   "year": 2025
-}}
+}
 ###
 @newCar = {{postACar.response.body._id}}
 

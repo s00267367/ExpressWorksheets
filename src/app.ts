@@ -40,12 +40,12 @@ app.get('/Stormlight', async (_req : Request, res: Response) => {
     });
 });
 
-app.get("/pong", (_req : Request, res: Response) => {
+app.get("/pong", (_req : Request, _res: Response) => {
     console.log("Received request to /pong");
     throw new Error("Simulated error in /pong route");
 });
 
-app.get("/pung", async (_req : Request, res: Response) => {
+app.get("/pung", async (_req : Request, _res: Response) => {
     console.log("Received request to /pung");
      throw new Error("Simulated error in /pung route");
 });

@@ -3,6 +3,7 @@ import carRoutes from './routes/cars';
 import {logURL} from './middleware/log.middleware';
 import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
+import cors from 'Cors';
 //import { authenticateKey } from "./middleware/auth.middleware";
 //import {authenticateKey} from './middleware/auth.middleware';
 
@@ -12,6 +13,7 @@ import swaggerUi from 'swagger-ui-express';
 export const app: Application = express();
 
 app.use(express.json());
+app.use(cors());
 app.use('/api/v1/cars', logURL, carRoutes);
 app.use(logURL);
 app.use(

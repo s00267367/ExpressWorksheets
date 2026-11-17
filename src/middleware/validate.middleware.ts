@@ -8,8 +8,12 @@ export const validate = (schema: z.ZodObject<any>) => (
   next: NextFunction
 ): void => {
 
-  const validation = schema.safeParse(req.body);
-
+  const validation = schema.safeParse({
+      body: req.body,
+      params: req.params,
+      query: req.query
+    });
+    
   if (!validation.success) {
 
     next(new ValidationError('Validation failed',
@@ -17,8 +21,9 @@ export const validate = (schema: z.ZodObject<any>) => (
     return;
   }
 
-  req.body = validation.data
+  req.body = validation.data.body;
 
   next();
+
 };
 

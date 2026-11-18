@@ -23,3 +23,14 @@ x-api-key: 1234567890
   "email": "john2000.doe@example.com",
   "password": "idk"
 }
+
+###
+# @name loginUser
+POST {{endpoint}}/login HTTP/1.1
+content-type: application/json
+x-api-key: 1234567890
+
+{
+  "email": "john2.doe@example.com",
+  "password": "securepassword"
+}

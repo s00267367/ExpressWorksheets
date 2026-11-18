@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { AuthController } from '../controllers/auth';
-
+import { authenticateJWT } from '../middleware/auth.middleware';
 import { validate } from '../middleware/validate.middleware';
 
 import { registerZSchema, loginZSchema } from '../models/users';
@@ -8,7 +8,7 @@ import { registerZSchema, loginZSchema } from '../models/users';
 const router = Router();
 const authController = new AuthController();
 
-
+router.get('/me', authenticateJWT, authController.me);
 router.post('/register', validate(registerZSchema), authController.register);
 router.post('/login', validate(loginZSchema), authController.login);
 

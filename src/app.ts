@@ -7,14 +7,19 @@ import cors from 'Cors';
 import { errorHandler } from "./middleware/errorhandle.middleware";
 //import { authenticateKey } from "./middleware/auth.middleware";
 //import {authenticateKey} from './middleware/auth.middleware';
+import authRoutes from './routes/auth';
+ 
+
 
 
 
 
 export const app: Application = express();
 
+
 app.use(express.json());
 app.use(cors());
+app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/cars', logURL, carRoutes);
 app.use(errorHandler);
 app.use(logURL);

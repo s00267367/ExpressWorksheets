@@ -1,0 +1,14 @@
+@endpoint = http://localhost:1610/api/v1/auth
+
+###
+# @name registerUser
+POST {{endpoint}}/register HTTP/1.1
+content-type: application/json
+x-api-key: 1234567890
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "securepassword"
+}
+

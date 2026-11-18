@@ -26,14 +26,19 @@ content-type: application/json
 
 ###
 
-DELETE  {{endpoint}}/6ab39ad46bcda005d5b2cabd HTTP/3.0
+DELETE  {{endpoint}}/{{newCar}} HTTP/3.0
 content-type: application/json
 
 ###
 
-PUT  {{endpoint}}/6ab39ad46bcda005d5b2cabd HTTP/3.0
+PUT  {{endpoint}}/{{newCar}} HTTP/3.0
 content-type: application/json
 
+{
+  "make": "Ferrari",
+  "model": "Auris",
+  "year": 2005
+}
 ###
 GET  http://localhost:1610/stormlight HTTP/3.0
 content-type: application/json

@@ -25,10 +25,11 @@ content-type: application/json
 
 
 ###
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZjZjc5MzhlM2Q1NjU5ZWNkYTUyYmEiLCJlbWFpbCI6ImpvaG4yLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTc5NDk5NTk1NywiZXhwIjoxNzk0OTk2MDc3fQ.lBjK8epLwlU5LERvUZUy5d6BAl8aiEMdwm9SyVPIAJ4
+###
 DELETE  {{endpoint}}/{{newCar}} HTTP/3.0
 content-type: application/json
-
+Authorization: Bearer {{token}}
 ###
 
 PUT  {{endpoint}}/{{newCar}} HTTP/3.0

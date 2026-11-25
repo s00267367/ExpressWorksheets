@@ -1,4 +1,4 @@
-import { NotFoundError } from '../apperrors/app-error';
+import { NotFoundError } from '../utils/app-error';
 import { CarModel, ICar } from '../models/cars'
 import { HydratedDocument } from 'mongoose';
 

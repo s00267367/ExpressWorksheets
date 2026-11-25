@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { Request, Response, NextFunction } from 'express';
-import { ValidationError } from '../apperrors/app-error';
+import { ValidationError } from '../utils/app-error';
 
 export const validate = (schema: z.ZodObject<any>) => (
   req: Request,
